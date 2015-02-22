@@ -1,0 +1,74 @@
+---
+inherit_from:
+  - default.yml
+
+AllCops:
+  Exclude:
+    - '.direnv/**/*'
+  # Makes it easier to find which cop is responsible for emitting the error
+  DisplayCopNames: true
+
+Lint/Debugger:
+  Exclude:
+    - debug.rb
+
+# We use multi-line {...} for async blocks
+Style/Blocks:
+  Enabled: false
+
+Style/FileName:
+  # Don't apply the rule to executables. It's better to match the gem name
+  # to the executable name.
+  Exclude:
+    - 'bin/*'
+
+# We use multi-line block chains with async code
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/TrivialAccessors:
+  ExactNameMatch: true
+
+# Allows for easy diffing
+# Keep them sorted alphabetically unless a meaningful order exists
+Style/TrailingComma:
+  EnforcedStyleForMultiline: comma
+
+# There is no speed benefit to single-quote string literals
+# Syntax highlighting shows if any interpolation is incurring
+# One less thing to worry about
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Style/Semicolon:
+  AllowAsExpressionSeparator: true
+
+Style/NumericLiterals:
+  MinDigits: 6
+
+Style/NilComparison:
+  Exclude:
+    # conflicts with `x.should == nil`
+    # in future use the new rspec notation `expect(x).to be_nil` instead
+    - '**/*_spec.rb'
+
+Lint/Void:
+  Exclude:
+    # conflicts with `x.should == foo`
+    # in future use the new rspec notation `expect(x).to eq(foo)` instead
+    - '**/*_spec.rb'
+
+# `$1` is shorter than `Regexp.last_match[1]`
+Style/PerlBackrefs:
+  Enabled: false
+
+# We don't care about the new `->(){}` lambda style
+Style/Lambda:
+  Enabled: false
+
+# `module_function` is not strictly equivalent to `extend self`
+Style/ModuleFunction:
+  Enabled: false
