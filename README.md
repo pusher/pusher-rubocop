@@ -1,22 +1,17 @@
-Pusher RuboCop - Enforcing our internal ruby styleguide
-=======================================================
+Pusher Ruby Style for Rubocop
+=============================
 
-Use with discretion. This is a hack on top of the wonderful
-[rubocop](https://rubygems.org/gems/rubocop) gem to
-enforce our ruby style internally.
+Opinonated changes to the default and wonderful
+[rubocop](https://rubygems.org/gems/rubocop) ruleset.
+
+Each change should be explained and motivated.
 
 Usage
 -----
 
-The `pusher-rubocop` executable should behave exactly as the `rubocop`
-executable but with our own styleguide applied.
+In your .rubocop.yml add the following at the top:
 
-Upgrade rubocop
----------------
-
-pusher-rubocop is pinning a specific rubocop gem version to avoid ambiguity.
-
-To update the rubocop version:
-* change the version specified in the `pusher-rubocop.gemspec` file
-* copy the `config/{default,disabled,enabled}.yml` from the rubocop project
-
+```yaml
+inherit_from:
+  - https://raw.githubusercontent.com/pusher/pusher-rubocop/pusher-rubocop.yml
+```
