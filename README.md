@@ -13,5 +13,5 @@ In your .rubocop.yml add the following at the top:
 
 ```yaml
 inherit_from:
-  - https://raw.githubusercontent.com/pusher/pusher-rubocop/pusher-rubocop.yml
+  - https://raw.githubusercontent.com/pusher/pusher-rubocop/master/pusher-rubocop.yml
 ```
