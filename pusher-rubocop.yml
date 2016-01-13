@@ -1,7 +1,4 @@
 ---
-inherit_from:
-  - default.yml
-
 AllCops:
   Exclude:
     - '.direnv/**/*'
