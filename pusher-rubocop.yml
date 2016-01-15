@@ -54,6 +54,15 @@ Style/DotPosition:
   #     .bar
   EnforcedStyle: trailing
 
+Style/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
 Style/AlignParameters:
   # The `with_fixed_indentation` style aligns the following lines with one
   # level of indentation relative to the start of the line with the method call.
