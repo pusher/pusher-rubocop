@@ -43,6 +43,17 @@ Style/StringLiterals:
   # One less thing to worry about
   EnforcedStyle: double_quotes
 
+Style/DotPosition:
+  #
+  #   Foo.
+  #     bar
+  #
+  # instead of
+  #
+  #   Foo
+  #     .bar
+  EnforcedStyle: trailing
+
 Style/AlignParameters:
   # The `with_fixed_indentation` style aligns the following lines with one
   # level of indentation relative to the start of the line with the method call.
