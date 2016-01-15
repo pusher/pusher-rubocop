@@ -59,18 +59,6 @@ Style/NumericLiterals:
   # Only enforce numeric separators from 1_000_000 for readability.
   MinDigits: 6
 
-Style/NilComparison:
-  Exclude:
-    # conflicts with `x.should == nil`
-    # in future use the new rspec notation `expect(x).to be_nil` instead
-    - '**/*_spec.rb'
-
-Lint/Void:
-  Exclude:
-    # conflicts with `x.should == foo`
-    # in future use the new rspec notation `expect(x).to eq(foo)` instead
-    - '**/*_spec.rb'
-
 # `$1` is shorter than `Regexp.last_match[1]`
 Style/PerlBackrefs:
   Enabled: false
