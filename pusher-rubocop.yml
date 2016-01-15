@@ -1,16 +1,19 @@
 ---
 AllCops:
   Exclude:
+    # Don't rubocop external dependencies when using direnv
     - '.direnv/**/*'
   # Makes it easier to find which cop is responsible for emitting the error
   DisplayCopNames: true
-
-Lint/Debugger:
-  Exclude:
-    - debug.rb
+  DisplayStyleGuide: true
+  ExtraDetails: true
 
 # We use multi-line {...} for async blocks
 Style/BlockDelimiters:
+  Enabled: false
+
+# We use multi-line block chains with async code
+Style/MultilineBlockChain:
   Enabled: false
 
 Style/FileName:
@@ -19,44 +22,66 @@ Style/FileName:
   Exclude:
     - 'bin/*'
 
-# We use multi-line block chains with async code
-Style/MultilineBlockChain:
-  Enabled: false
-
-Style/TrivialAccessors:
-  ExactNameMatch: true
-
 # Allows for easy diffing
 # Keep them sorted alphabetically unless a meaningful order exists
-Style/TrailingComma:
+Style/TrailingCommaInLiteral:
+  # Requires a comma after the last argument, but only for
+  # parenthesized method calls where each argument is on its own line.
+  #
+  # The goal is to limit unecessary noise in diffs and also unecessary comma
+  # re-placement in case of changing the ordering.
   EnforcedStyleForMultiline: comma
 
-# There is no speed benefit to single-quote string literals
-# Syntax highlighting shows if any interpolation is incurring
-# One less thing to worry about
 Style/StringLiterals:
+  # There is no speed benefit to single-quote string literals Syntax
+  # highlighting shows if any interpolation is incurring
+  #
+  # It also means that when an interpolated variable is added to or removed
+  # from the string the developer doesn't have to change the surrounding
+  # quotes.
+  #
+  # One less thing to worry about
   EnforcedStyle: double_quotes
 
+Style/DotPosition:
+  #
+  #   Foo.
+  #     bar
+  #
+  # instead of
+  #
+  #   Foo
+  #     .bar
+  EnforcedStyle: trailing
+
+Style/FirstParameterIndentation:
+  EnforcedStyle: consistent
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Style/SpecialGlobalVars:
+  # Don't use crazy `Regexp.last_match[1]` instead of `$1`
+  EnforcedStyle: use_perl_names
+
 Style/AlignParameters:
+  # The `with_fixed_indentation` style aligns the following lines with one
+  # level of indentation relative to the start of the line with the method call.
+  #
+  #     method_call(a,
+  #       b)
   EnforcedStyle: with_fixed_indentation
 
 Style/Semicolon:
+  # Allow ; to separate several expressions on the same line.
   AllowAsExpressionSeparator: true
 
 Style/NumericLiterals:
+  # Only enforce numeric separators from 1_000_000 for readability.
   MinDigits: 6
-
-Style/NilComparison:
-  Exclude:
-    # conflicts with `x.should == nil`
-    # in future use the new rspec notation `expect(x).to be_nil` instead
-    - '**/*_spec.rb'
-
-Lint/Void:
-  Exclude:
-    # conflicts with `x.should == foo`
-    # in future use the new rspec notation `expect(x).to eq(foo)` instead
-    - '**/*_spec.rb'
 
 # `$1` is shorter than `Regexp.last_match[1]`
 Style/PerlBackrefs:
