@@ -63,6 +63,10 @@ Style/MultilineMethodCallIndentation:
 Style/MultilineOperationIndentation:
   EnforcedStyle: indented
 
+Style/SpecialGlobalVars:
+  # Don't use crazy `Regexp.last_match[1]` instead of `$1`
+  EnforcedStyle: use_perl_names
+
 Style/AlignParameters:
   # The `with_fixed_indentation` style aligns the following lines with one
   # level of indentation relative to the start of the line with the method call.
