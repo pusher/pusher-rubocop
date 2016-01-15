@@ -10,7 +10,7 @@ Lint/Debugger:
     - debug.rb
 
 # We use multi-line {...} for async blocks
-Style/Blocks:
+Style/BlockDelimiters:
   Enabled: false
 
 Style/FileName:
